@@ -1,0 +1,26 @@
+{
+  "name": "discord-looking-for-player-bot",
+  "version": "1.0.0",
+  "description": "Bot that will allow players to alert others when they want others to join a server",
+  "homepage": "https://github.com/Superchicken962/discord-looking-for-player-bot#readme",
+  "bugs": {
+    "url": "https://github.com/Superchicken962/discord-looking-for-player-bot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Superchicken962/discord-looking-for-player-bot.git"
+  },
+  "license": "ISC",
+  "author": "mark",
+  "type": "commonjs",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.27.0"
+  }
+}
