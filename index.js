@@ -31,6 +31,10 @@ client.commands = new Collection();
 loadCommands(client);
 
 client.on(Events.InteractionCreate, async(interaction) => {
+    if (interaction.isModalSubmit()) {
+        console.log('modal', interaction.customId);
+    }
+    
     if (!interaction.isChatInputCommand()) return;
 
     const findCmd = interaction.client.commands.get(interaction.commandName);
