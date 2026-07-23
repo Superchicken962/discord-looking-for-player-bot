@@ -28,18 +28,20 @@ client.once(Events.ClientReady, (rc) => {
 });
 
 client.commands = new Collection();
+client.modals = new Collection();
 loadCommands(client);
 
 client.on(Events.InteractionCreate, async(interaction) => {
-    if (interaction.isModalSubmit()) {
-        console.log('modal', interaction.customId);
-    }
-    
-    if (!interaction.isChatInputCommand()) return;
+    if (!interaction.isChatInputCommand() && !interaction.isModalSubmit()) return;
 
-    const findCmd = interaction.client.commands.get(interaction.commandName);
+    // Set collection name to use the collection based on the interaction type.
+    let collectionName = "commands";
+    if (interaction.isModalSubmit()) collectionName = "modals";
+
+    // Find the interaction from set collection, using commandName or the customId if not available.
+    const findCmd = interaction.client[collectionName].get(interaction.commandName || interaction.customId);
     if (!findCmd) {
-        console.warn(`Command '${interaction.commandName}' not found!`);
+        console.warn(`Command / interaction '${interaction.commandName || interaction.customId}' not found!`);
         return;
     }
 
